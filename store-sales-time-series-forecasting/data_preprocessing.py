@@ -8,8 +8,9 @@ import numpy as np
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(script_dir, "data")
 
-data_path = os.path.join(script_dir, "data.csv")
+data_path = os.path.join(data_dir, "data.csv")
 train = pd.read_csv(data_path)
 
 print(train.head())
@@ -38,7 +39,7 @@ X_test = scaler.fit_transform(X_test)
 y_train = y_train.astype(np.float32)
 y_test = y_test.astype(np.float32)
 
-np.save(f"{script_dir}/X_train.npy", X_train)
-np.save(f"{script_dir}/X_test.npy", X_test)
-np.save(f"{script_dir}/y_train.npy", y_train)
-np.save(f"{script_dir}/y_test.npy", y_test)
+np.save(f"{data_dir}/X_train.npy", X_train)
+np.save(f"{data_dir}/X_test.npy", X_test)
+np.save(f"{data_dir}/y_train.npy", y_train)
+np.save(f"{data_dir}/y_test.npy", y_test)

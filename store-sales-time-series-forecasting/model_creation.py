@@ -1,8 +1,8 @@
 import os
 import numpy as np
-import keras
-import talos
 import time
+import tensorflow as tf
+from tensorflow import keras
 
 # Load data
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -52,19 +52,19 @@ def build_model(x_train, y_train, x_val, y_val, params):
 
 # Define the parameter grid
 param_grid = {
-    "num_layers": [2, 3],
+    "num_layers": [2],
     "units_layer_1": [64, 128],
     "units_layer_2": [64, 128],
     "units_layer_3": [64, 128],
     "activation_layer_1": ["relu", "sigmoid"],
     "activation_layer_2": ["relu", "sigmoid"],
     "activation_layer_3": ["relu", "sigmoid"],
-    "batch_size": [8, 16, 32],
-    "epochs": [10, 20],
+    "batch_size": [8],
+    "epochs": [10],
     "learning_rate": [0.001, 0.01, 0.0001],
     "optimizer": ["adam"],
     "loss": [
-        "mse",
+        # "mse",
         "mae",
     ],
 }
@@ -76,7 +76,7 @@ scan = talos.Scan(
     params=param_grid,
     model=build_model,
     experiment_name="regression_talos",
-    round_limit=1080,
+    round_limit=10,
 )
 
 # Get the best model
