@@ -75,8 +75,10 @@ central (energy+mfcc)→[Central] → real_output
 
 ### Installation
 
-```bash
-pip install tensorflow
+Run the provided PowerShell script to install all required dependencies:
+
+```powershell
+./install.ps1
 ```
 
 ### Model Definition
