@@ -11,7 +11,15 @@ By combining these features in both independent and shared processing branches, 
 
 The premise for this architecture is that both MFCC and energy-related features are, individually, capable of anomaly detection.
 
----
+## Why Auxiliary Outputs?
+
+Including auxiliary outputs allows gradients from their losses to flow not only through their respective branches but also back into the central branch. This means that the central branch is influenced by the learning signals from both the energy and MFCC auxiliary tasks, not just the main output. As a result:
+
+- **Shared Representation Learning:** The central branch learns representations that are useful for both the main and auxiliary tasks, improving its ability to generalize.
+- **Regularization:** Backpropagation from auxiliary outputs acts as a form of regularization, reducing overfitting by encouraging the central branch to capture features relevant to all outputs.
+- **Improved Convergence:** The additional gradient signals can help the model converge faster and avoid local minima associated with optimizing only the main output.
+
+This design ensures that the central branch is not isolated but is actively shaped by all available supervision, leading to a more robust anomaly detector.
 
 ## Architecture
 
