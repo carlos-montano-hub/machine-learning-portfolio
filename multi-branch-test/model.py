@@ -1,5 +1,5 @@
-from keras import Input, Model
-from keras.layers import Dense, Concatenate, Add
+from tensorflow.python.keras import Input, Model
+from tensorflow.python.keras.layers import Dense, Concatenate, Add
 
 # Feature sizes
 n_energy_features = 5  # Change as needed
