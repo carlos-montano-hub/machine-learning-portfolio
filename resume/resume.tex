@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 3.0 (December 17, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	%a4paper, % Uncomment for A4 paper size (default is US letter)
+	11pt, % Default font size, can use 10pt, 11pt or 12pt
+]{resume} % Use the resume class
+
+\usepackage{ebgaramond} % Use the EB Garamond font
+\usepackage{multicol} % Add this line for multicols environment
+\usepackage{hyperref} % Add this line for \href support
+\usepackage{xcolor} % Add this line for \textcolor support
+\usepackage{enumitem} % Add this line for custom itemize labels
+
+%------------------------------------------------
+\name{Carlos Humberto Montaño Alcalá}
+\address{\textbf{\Large AI \& Software Engineer}}
+\begin{document}
+% Contact Information
+\begin{center}
+	montanoc70@gmail.com \quad
+	\href{https://www.linkedin.com/in/carlos-montaño-0055231a9/}{\textcolor{blue}{LinkedIn}} \quad
+	\href{https://medium.com/@montanoc70}{\textcolor{blue}{Medium}} \quad
+	\href{https://github.com/carlos-montano-hub}{\textcolor{blue}{GitHub}} \quad
+	6621438271
+\end{center}
+
+% Include separated sections
+
+\input{experience}
+\input{education}
+\newpage
+\input{strengths}
+\input{projects}
+
+\end{document}
