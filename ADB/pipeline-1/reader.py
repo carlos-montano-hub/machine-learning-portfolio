@@ -107,6 +107,11 @@ def read_dataframes():
     order_items_dataframe = order_items_dataframe[
         order_items_dataframe["product_id"].isin(valid_product_ids)
     ]
+
+    order_reviews_dataframe = order_reviews_dataframe.drop_duplicates(
+        subset=["review_id"],
+        keep="first",
+    )
     return (
         customers_dataframe,
         geolocation_dataframe,

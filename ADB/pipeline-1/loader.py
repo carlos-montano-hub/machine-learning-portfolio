@@ -48,7 +48,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading ProductCategoryTr")
     session.bulk_save_objects(
         [
@@ -61,7 +60,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading Customer")
     session.bulk_save_objects(
         [
@@ -77,7 +75,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading Seller")
     session.bulk_save_objects(
         [
@@ -92,7 +89,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading Product")
     session.bulk_save_objects(
         [
@@ -140,7 +136,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading Order")
     session.bulk_save_objects(
         [
@@ -179,7 +174,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading OrderItem")
     session.bulk_save_objects(
         [
@@ -201,7 +195,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading OrderPayment")
     session.bulk_save_objects(
         [
@@ -217,7 +210,6 @@ with Session(engine) as session:
     )
     session.commit()
 
-with Session(engine) as session:
     print("Uploading OrderReview")
     session.bulk_save_objects(
         [

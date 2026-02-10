@@ -129,7 +129,7 @@ class OrderReview(Base):
     __tablename__ = "order_reviews"
 
     review_id: Mapped[str] = mapped_column(primary_key=True)
-    order_id: Mapped[str] = mapped_column(ForeignKey("orders.order_id"), unique=True)
+    order_id: Mapped[str] = mapped_column(ForeignKey("orders.order_id"))
     review_score: Mapped[int]
     review_comment_title: Mapped[Optional[str]]
     review_comment_message: Mapped[Optional[str]]
