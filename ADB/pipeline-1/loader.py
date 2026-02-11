@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 import pandas as pd
 from sqlalchemy.orm import Session
-from models import (
+from base import (
     Base,
     Customer,
     Geolocation,
