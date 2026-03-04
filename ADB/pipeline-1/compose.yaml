@@ -12,5 +12,41 @@ services:
     volumes:
       - postgres16_data:/var/lib/postgresql/data
 
+  doris-fe:
+    image: apache/doris:2.1.6-fe
+    container_name: doris-fe
+    hostname: doris-fe
+    environment:
+      FE_SERVERS: "fe1:doris-fe:9010" # Lista de todos los servidores de FE en el cluster, Ej: FE_SERVERS: "fe1:fe1:9010,fe2:fe2:9010,fe3:fe3:9010"
+      FE_ID: "1" # id del servidor actual
+    ports:
+      - "8030:8030" # FE web UI
+      - "9030:9030" # MySQL protocol
+      - "9010:9010" # FE edit log
+    volumes:
+      - doris_fe_meta:/opt/apache-doris/fe/doris-meta
+      - doris_fe_log:/opt/apache-doris/fe/log
+    networks:
+      - dorisnet
+
+  doris-be:
+    image: apache/doris:2.1.6-be
+    container_name: doris-be
+    hostname: doris-be
+    depends_on:
+      - doris-fe
+    environment:
+      FE_SERVERS: "fe1:doris-fe:9010"
+      BE_ADDR: "doris-be:9050"
+    ports:
+      - "8040:8040" # BE http
+      - "9050:9050" # BE heartbeat
+      - "9060:9060" # BE thrift
+    volumes:
+      - doris_be_storage:/opt/apache-doris/be/storage
+      - doris_be_log:/opt/apache-doris/be/log
+    networks:
+      - dorisnet
+
 volumes:
   postgres16_data:
