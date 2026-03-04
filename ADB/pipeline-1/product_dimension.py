@@ -1,7 +1,7 @@
 from typing import Optional
-from sqlalchemy import ForeignKey, Integer, Date, String, Float, Computed
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-import datetime
+
+from sqlalchemy import Computed, Integer
+from sqlalchemy.orm import Mapped, mapped_column
 
 from base import Base
 
