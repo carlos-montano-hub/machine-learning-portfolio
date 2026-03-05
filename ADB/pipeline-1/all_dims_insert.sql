@@ -69,3 +69,4 @@ SELECT DISTINCT
 FROM orders
 WHERE orders.order_status IS NOT NULL
 ON CONFLICT (order_status) DO NOTHING;
+
