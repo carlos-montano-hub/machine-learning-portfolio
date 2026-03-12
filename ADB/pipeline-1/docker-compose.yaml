@@ -15,11 +15,15 @@ services:
   doris:
     image: yagagagaga/doris-standalone
     container_name: doris
+    restart: unless-stopped
     privileged: true
     ports:
-      - "8030:8030"
-      - "8040:8040"
-      - "9030:9030"
+      - "8030:8030" # FE Web UI
+      - "8040:8040" # BE HTTP
+      - "9030:9030" # MySQL protocol
+    volumes:
+      - doris_data:/opt/apache-doris
 
 volumes:
   postgres16_data:
+  doris_data:

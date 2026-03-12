@@ -8,7 +8,10 @@ from base import Base
 
 class ProductDimension(Base):
     __tablename__ = "dim_product"
-    product_id: Mapped[str] = mapped_column(primary_key=True)
+    product_key: Mapped[int] = mapped_column(
+        Integer, primary_key=True, autoincrement=True
+    )
+    product_id: Mapped[str]
     product_english_category_name: Mapped[str]
     product_category_name: Mapped[str]
     product_weight_g: Mapped[int]

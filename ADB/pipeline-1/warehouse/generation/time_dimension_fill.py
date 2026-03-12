@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 from typing import List
 
-from time_dimension import TimeDimension
+from dimensions.time_dimension import TimeDimension
 
 
 def build_time_dimension_rows(

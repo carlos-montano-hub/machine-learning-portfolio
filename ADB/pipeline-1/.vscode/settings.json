@@ -1,0 +1,36 @@
+{
+  "cSpell.words": [
+    "checkpointer",
+    "fastmcp",
+    "streamable",
+    "streamablehttp",
+    "tavily"
+  ],
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.cwd": "${workspaceFolder}",
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.analysis.typeCheckingMode": "standard",
+  "explorer.openEditors.sortOrder": "editorOrder",
+  "explorer.openEditors.visible": 9,
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": "src/app/prompts/copilot-code-agent-instructions.md"
+    }
+  ],
+  "github.copilot.chat.reviewSelection.instructions": [
+    {
+      "file": "src/app/prompts/copilot-code-agent-instructions.md"
+    }
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
+  },
+  "isort.args": ["--profile", "black"]
+}
