@@ -11,6 +11,14 @@ services:
       - "5435:5432"
     volumes:
       - postgres16_data:/var/lib/postgresql/data
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - max_replication_slots=10
+      - -c
+      - max_wal_senders=10
 
   doris:
     image: yagagagaga/doris-standalone
@@ -18,12 +26,59 @@ services:
     restart: unless-stopped
     privileged: true
     ports:
-      - "8030:8030" # FE Web UI
+      - "8030:8030" # FE Web UI / HTTP
       - "8040:8040" # BE HTTP
       - "9030:9030" # MySQL protocol
     volumes:
       - doris_data:/opt/apache-doris
 
+  jobmanager:
+    image: flink:1.20.2-scala_2.12-java17
+    container_name: flink-jobmanager
+    restart: unless-stopped
+    command: jobmanager
+    ports:
+      - "8081:8081"
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+    volumes:
+      - ./flink-lib:/opt/flink/usrlib
+    depends_on:
+      - postgres
+
+  taskmanager:
+    image: flink:1.20.2-scala_2.12-java17
+    container_name: flink-taskmanager
+    restart: unless-stopped
+    command: taskmanager
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 2
+    volumes:
+      - ./flink-lib:/opt/flink/usrlib
+    depends_on:
+      - jobmanager
+      - postgres
+
+  sql-client:
+    image: flink:1.20.2-scala_2.12-java17
+    container_name: flink-sql-client
+    command: bin/sql-client.sh
+    stdin_open: true
+    tty: true
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+        rest.address: jobmanager
+    volumes:
+      - ./flink-lib:/opt/flink/usrlib
+      - ./sql_scripts:/opt/flink/sql
+    depends_on:
+      - jobmanager
+      - postgres
+      
 volumes:
   postgres16_data:
   doris_data:
