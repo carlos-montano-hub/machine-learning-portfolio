@@ -25,7 +25,6 @@ WITH
         'scan.incremental.snapshot.enabled' = 'true',
         'scan.incremental.snapshot.chunk.size' = '2000',
         'scan.snapshot.fetch.size' = '200',
-        'scan.incremental.snapshot.chunk.key-column' = 'geolocation_zip_code_prefix',
         'debezium.publication.name' = 'olist_publication',
         'debezium.publication.autocreate.mode' = 'disabled'
     );
