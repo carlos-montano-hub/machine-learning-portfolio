@@ -16,9 +16,9 @@ services:
       - -c
       - wal_level=logical
       - -c
-      - max_replication_slots=10
+      - max_replication_slots=32
       - -c
-      - max_wal_senders=10
+      - max_wal_senders=32
 
   doris:
     image: yagagagaga/doris-standalone
@@ -44,6 +44,7 @@ services:
         jobmanager.rpc.address: jobmanager
     volumes:
       - ./flink-lib:/opt/flink/usrlib
+      - ./flink-checkpoints:/shared/flink-checkpoints
     depends_on:
       - postgres
 
@@ -55,9 +56,11 @@ services:
     environment:
       FLINK_PROPERTIES: |
         jobmanager.rpc.address: jobmanager
-        taskmanager.numberOfTaskSlots: 2
+        taskmanager.numberOfTaskSlots: 16
+        taskmanager.memory.process.size: 4096m
     volumes:
       - ./flink-lib:/opt/flink/usrlib
+      - ./flink-checkpoints:/shared/flink-checkpoints
     depends_on:
       - jobmanager
       - postgres
@@ -75,6 +78,7 @@ services:
     volumes:
       - ./flink-lib:/opt/flink/usrlib
       - ./sql_scripts:/opt/flink/sql
+      - ./flink-checkpoints:/shared/flink-checkpoints
     depends_on:
       - jobmanager
       - postgres

@@ -1,32 +1,30 @@
-SELECT
-    pg_create_logical_replication_slot ('test_slot', 'pgoutput');
+ALTER TABLE public.geolocations REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE geolocations REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.customers REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE customers REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.sellers REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE sellers REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.product_category_name_translation REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE product_category_name_translation REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.products REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE products REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.orders REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE orders REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.order_items REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE order_items REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.order_payments REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE order_payments REPLICA IDENTITY DEFAULT;
+ALTER TABLE public.order_reviews REPLICA IDENTITY DEFAULT;
 
-ALTER TABLE order_reviews REPLICA IDENTITY DEFAULT;
+-- debezium.publication.autocreate.mode = disabled
+DROP PUBLICATION IF EXISTS olist_publication;
 
-DROP PUBLICATION IF EXISTS test_publication;
-
-CREATE PUBLICATION test_publication FOR TABLE geolocations,
-customers,
-sellers,
-product_category_name_translation,
-products,
-orders,
-order_items,
-order_payments,
-order_reviews;
+CREATE PUBLICATION olist_publication FOR TABLE public.geolocations,
+public.customers,
+public.sellers,
+public.product_category_name_translation,
+public.products,
+public.orders,
+public.order_items,
+public.order_payments,
+public.order_reviews;
