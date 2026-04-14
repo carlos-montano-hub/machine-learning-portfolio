@@ -16,6 +16,8 @@ ALTER TABLE public.order_payments REPLICA IDENTITY DEFAULT;
 
 ALTER TABLE public.order_reviews REPLICA IDENTITY DEFAULT;
 
+ALTER TABLE public.dim_time REPLICA IDENTITY DEFAULT;
+
 -- debezium.publication.autocreate.mode = disabled
 DROP PUBLICATION IF EXISTS olist_publication;
 
@@ -27,4 +29,5 @@ public.products,
 public.orders,
 public.order_items,
 public.order_payments,
-public.order_reviews;
+public.order_reviews,
+public.dim_time;
