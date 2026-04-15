@@ -3,7 +3,7 @@ import datetime
 from sqlalchemy import Date, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 
-from base import Base
+from source.base import Base
 
 
 class TimeDimension(Base):

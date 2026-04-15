@@ -1,1 +1,12 @@
-flink-checkpoints/*/**
+# Python
+.venv/
+__pycache__/
+
+# Runtime data
+flink-checkpoints/
+
+# Binary dependencies
+flink-lib/*.jar
+
+# Environment
+.env

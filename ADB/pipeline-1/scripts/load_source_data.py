@@ -1,8 +1,13 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from sqlalchemy import create_engine
 import pandas as pd
 from sqlalchemy.orm import Session
-from base import Base
-from source_db_models import (
+from source.base import Base
+from source.models import (
     Customer,
     Geolocation,
     Order,
@@ -13,7 +18,7 @@ from source_db_models import (
     ProductCategoryTranslation,
     Seller,
 )
-from reader import read_dataframes
+from source.reader import read_dataframes
 
 database_url = "postgresql+psycopg2://postgres_user:postgres_pass@localhost:5435/olist"
 engine = create_engine(database_url, pool_pre_ping=True)

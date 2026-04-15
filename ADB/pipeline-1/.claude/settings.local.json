@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /d/Projects/machine-learning-portfolio/ADB/pipeline-1/*.py)",
+      "Bash(wc -l /d/Projects/machine-learning-portfolio/ADB/pipeline-1/raw_data/*.csv)",
+      "Bash(rm -f superset-setup.ps1)",
+      "Bash(rmdir sql_scripts/source_sink_flink_tables)",
+      "Bash(rmdir sql_scripts)",
+      "Bash(rmdir flink_scripts)",
+      "Bash(rmdir warehouse/doris_tables)",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from source.base import Base; print\\('source.base OK'\\)\")",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from source.models import Customer, Order; print\\('source.models OK'\\)\")",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from source.time_dimension import TimeDimension; print\\('source.time_dimension OK'\\)\")",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from source.reader import RAW_DATA_DIR; print\\(f'RAW_DATA_DIR: {RAW_DATA_DIR}'\\); assert RAW_DATA_DIR.exists\\(\\), 'raw_data dir not found'; print\\('source.reader OK'\\)\")",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

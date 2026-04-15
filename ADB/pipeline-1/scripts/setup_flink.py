@@ -1,18 +1,18 @@
 """
 Run all Flink SQL table scripts.
-Concatenates setup_flink.sql (JAR loading) with each table file and
+Concatenates setup.sql (JAR loading) with each table file and
 executes them via the Flink SQL client inside the Docker container.
 
 To run a single table script:
-  python setup_flink.py product_category_name_translation.sql
+  python scripts/setup_flink.py product_category_name_translation.sql
 """
 
 import subprocess
 import sys
 
 CONTAINER = "flink-sql-client"
-SETUP_SQL = "/opt/flink/sql/setup_flink.sql"
-TABLES_DIR = "/opt/flink/sql/source_sink_flink_tables"
+SETUP_SQL = "/opt/flink/sql/setup.sql"
+TABLES_DIR = "/opt/flink/sql/source_sink_tables"
 
 
 def run_sql_file(file_path: str):

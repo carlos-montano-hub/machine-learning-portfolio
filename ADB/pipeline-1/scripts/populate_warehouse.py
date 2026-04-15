@@ -9,14 +9,17 @@ engine = create_engine(
     pool_pre_ping=True,
 )
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+ETL_DIR = PROJECT_ROOT / "warehouse" / "etl"
+
 sql_file_paths = [
-    Path("warehouse/generation/insert_dim_customer.sql"),
-    Path("warehouse/generation/insert_dim_seller.sql"),
-    Path("warehouse/generation/insert_dim_geolocation.sql"),
-    Path("warehouse/generation/insert_dim_payment_type.sql"),
-    Path("warehouse/generation/insert_dim_order_status.sql"),
-    Path("warehouse/generation/insert_dim_product.sql"),
-    Path("warehouse/generation/insert_fact_table.sql"),
+    ETL_DIR / "insert_dim_customer.sql",
+    ETL_DIR / "insert_dim_seller.sql",
+    ETL_DIR / "insert_dim_geolocation.sql",
+    ETL_DIR / "insert_dim_payment_type.sql",
+    ETL_DIR / "insert_dim_order_status.sql",
+    ETL_DIR / "insert_dim_product.sql",
+    ETL_DIR / "insert_fact_table.sql",
 ]
 
 

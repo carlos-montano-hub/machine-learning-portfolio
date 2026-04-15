@@ -1,6 +1,7 @@
 CREATE TABLE
     IF NOT EXISTS warehouse.dim_time (
-        date_id INT NOT NULL COMMENT 'YYYYMMDD format',
+        date_id INT NOT NULL COMMENT 'Natural key, YYYYMMDD format',
+        time_key BIGINT NOT NULL AUTO_INCREMENT COMMENT 'Surrogate key',
         full_date DATE NOT NULL,
         year INT NOT NULL,
         quarter INT NOT NULL,

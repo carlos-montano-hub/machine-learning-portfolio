@@ -1,11 +1,16 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from datetime import date, timedelta
 from typing import List
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from base import Base
-from warehouse.dimensions.time_dimension import TimeDimension
+from source.base import Base
+from source.time_dimension import TimeDimension
 
 database_url = "postgresql+psycopg2://postgres_user:postgres_pass@localhost:5435/olist"
 engine = create_engine(database_url, pool_pre_ping=True)

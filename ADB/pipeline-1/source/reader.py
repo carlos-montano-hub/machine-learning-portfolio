@@ -1,25 +1,29 @@
+from pathlib import Path
+
 import pandas as pd
+
+RAW_DATA_DIR = Path(__file__).resolve().parent.parent / "raw_data"
 
 
 def read_dataframes():
-    customers_dataframe = pd.read_csv("raw_data/olist_customers_dataset.csv", dtype=str)
+    customers_dataframe = pd.read_csv(RAW_DATA_DIR / "olist_customers_dataset.csv", dtype=str)
     geolocation_dataframe = pd.read_csv(
-        "raw_data/olist_geolocation_dataset.csv", dtype=str
+        RAW_DATA_DIR / "olist_geolocation_dataset.csv", dtype=str
     )
     order_items_dataframe = pd.read_csv(
-        "raw_data/olist_order_items_dataset.csv", dtype=str
+        RAW_DATA_DIR / "olist_order_items_dataset.csv", dtype=str
     )
     order_payments_dataframe = pd.read_csv(
-        "raw_data/olist_order_payments_dataset.csv", dtype=str
+        RAW_DATA_DIR / "olist_order_payments_dataset.csv", dtype=str
     )
     order_reviews_dataframe = pd.read_csv(
-        "raw_data/olist_order_reviews_dataset.csv", dtype=str
+        RAW_DATA_DIR / "olist_order_reviews_dataset.csv", dtype=str
     )
-    orders_dataframe = pd.read_csv("raw_data/olist_orders_dataset.csv", dtype=str)
-    products_dataframe = pd.read_csv("raw_data/olist_products_dataset.csv", dtype=str)
-    sellers_dataframe = pd.read_csv("raw_data/olist_sellers_dataset.csv", dtype=str)
+    orders_dataframe = pd.read_csv(RAW_DATA_DIR / "olist_orders_dataset.csv", dtype=str)
+    products_dataframe = pd.read_csv(RAW_DATA_DIR / "olist_products_dataset.csv", dtype=str)
+    sellers_dataframe = pd.read_csv(RAW_DATA_DIR / "olist_sellers_dataset.csv", dtype=str)
     product_category_name_translation_dataframe = pd.read_csv(
-        "raw_data/product_category_name_translation.csv", dtype=str
+        RAW_DATA_DIR / "product_category_name_translation.csv", dtype=str
     )
 
     geolocation_dataframe["geolocation_lat"] = pd.to_numeric(
