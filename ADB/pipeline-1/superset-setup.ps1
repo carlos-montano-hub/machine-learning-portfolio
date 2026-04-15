@@ -1,0 +1,1 @@
+docker compose exec superset bash -lc "pip install sqlalchemy-doris"

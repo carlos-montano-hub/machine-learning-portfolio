@@ -13,12 +13,12 @@ Base.metadata.create_all(engine)
 
 
 def build_time_dimension_rows(
-    start_date: date,
+    start_date_inclusive: date,
     end_date_inclusive: date,
 ) -> List[TimeDimension]:
     rows: List[TimeDimension] = []
 
-    current_date = start_date
+    current_date = start_date_inclusive
     while current_date <= end_date_inclusive:
         iso_year, iso_week, iso_weekday = current_date.isocalendar()
 
@@ -46,8 +46,8 @@ def build_time_dimension_rows(
 
 
 rows = build_time_dimension_rows(
-    start_date=date(year=2026, month=1, day=2),
-    end_date_inclusive=date(year=2027, month=1, day=1),
+    start_date_inclusive=date(year=2015, month=1, day=1),
+    end_date_inclusive=date(year=2019, month=12, day=31),
 )
 with Session(engine) as session:
     session.add_all(rows)
